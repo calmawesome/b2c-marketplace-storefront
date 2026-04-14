@@ -9,7 +9,8 @@
     "lint": "next lint",
     "cf:build": "npx @opennextjs/cloudflare build",
     "cf:preview": "npx @opennextjs/cloudflare build && wrangler dev",
-    "cf:deploy": "npx @opennextjs/cloudflare build && wrangler deploy"
+    "cf:deploy": "npx @opennextjs/cloudflare build && wrangler deploy",
+    "cf:tail": "wrangler tail"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",

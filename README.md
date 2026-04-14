@@ -118,25 +118,36 @@ This storefront can run on Cloudflare Workers in SSR mode using OpenNext.
 yarn add -D @opennextjs/cloudflare wrangler
 ```
 
-2. Build worker bundle:
+2. Copy the env template and fill local values:
+
+```bash
+cp .dev.vars.example .dev.vars
+```
+
+3. Configure `wrangler.toml` bindings:
+- `compatibility_flags = ["nodejs_compat"]`
+- `[[kv_namespaces]]` for SSR cache (`NEXT_CACHE_KV`)
+- `[[r2_buckets]]` for object storage (`NEXT_R2`)
+
+4. Build worker bundle:
 
 ```bash
 yarn cf:build
 ```
 
-3. Local preview with Workers runtime:
+5. Local preview with Workers runtime:
 
 ```bash
 yarn cf:preview
 ```
 
-4. Deploy:
+6. Deploy:
 
 ```bash
 yarn cf:deploy
 ```
 
-`wrangler.toml` includes `compatibility_flags = ["nodejs_compat"]`, so common Node.js APIs used by SSR dependencies are polyfilled in the Workers runtime.
+For a complete production checklist and troubleshooting runbook, see [`docs/cloudflare-deploy.md`](./docs/cloudflare-deploy.md).
 
 ### Guides
 

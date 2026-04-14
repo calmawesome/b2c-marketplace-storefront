@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cf:build": "npx @opennextjs/cloudflare build",
+    "cf:preview": "npx @opennextjs/cloudflare build && wrangler dev",
+    "cf:deploy": "npx @opennextjs/cloudflare build && wrangler deploy"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",

@@ -1,0 +1,24 @@
+# Copy to .dev.vars for local `wrangler dev`.
+# Do NOT commit the real .dev.vars file.
+
+# Medusa backend
+MEDUSA_BACKEND_URL=http://localhost:9000
+NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_test_xxx
+
+# Site metadata
+NEXT_PUBLIC_BASE_URL=http://127.0.0.1:8787
+NEXT_PUBLIC_DEFAULT_REGION=us
+NEXT_PUBLIC_SITE_NAME="Fleek Marketplace"
+NEXT_PUBLIC_SITE_DESCRIPTION="Fleek Marketplace"
+
+# App secrets
+REVALIDATE_SECRET=replace-with-a-strong-secret
+
+# Integrations
+NEXT_PUBLIC_STRIPE_KEY=pk_test_xxx
+NEXT_PUBLIC_ALGOLIA_ID=xxx
+NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=xxx
+NEXT_PUBLIC_TALKJS_APP_ID=xxx
+
+# Optional external vendor URL
+NEXT_PUBLIC_VENDOR_URL=https://vendor.mercurjs.com

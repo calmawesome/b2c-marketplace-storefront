@@ -1,0 +1,36 @@
+name = "b2c-marketplace-storefront"
+main = ".open-next/worker.js"
+compatibility_date = "2026-04-14"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+# Shared non-secret runtime variables.
+[vars]
+NODE_ENV = "production"
+NEXT_PUBLIC_BASE_URL = "https://your-domain.example"
+NEXT_PUBLIC_DEFAULT_REGION = "us"
+
+# OpenNext/Next runtime cache (SSR data/cache tags).
+[[kv_namespaces]]
+binding = "NEXT_CACHE_KV"
+id = "REPLACE_WITH_PROD_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_PREVIEW_KV_NAMESPACE_ID"
+
+# Optional object storage for generated/static artifacts.
+[[r2_buckets]]
+binding = "NEXT_R2"
+bucket_name = "b2c-storefront-prod"
+preview_bucket_name = "b2c-storefront-preview"
+
+[env.preview]
+name = "b2c-marketplace-storefront-preview"
+
+[env.production]
+name = "b2c-marketplace-storefront"

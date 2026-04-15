@@ -6,7 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cf:build": "npx opennextjs-cloudflare build",
+    "cf:preview": "npm run cf:build && test -f .open-next/worker.js && npx wrangler dev",
+    "cf:deploy": "npm run cf:build && test -f .open-next/worker.js && npx wrangler deploy",
+    "cf:tail": "npx wrangler tail",
+    "cf:deploy:env": "npm run cf:build && test -f .open-next/worker.js && npx wrangler deploy --env=${CF_ENV}"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",

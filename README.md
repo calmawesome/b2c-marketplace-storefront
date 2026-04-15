@@ -107,6 +107,59 @@ yarn dev
 
 &nbsp;
 
+
+### Deploy to Cloudflare Workers (SSR + Node.js compatibility)
+
+This storefront can run on Cloudflare Workers in SSR mode using OpenNext.
+
+1. Install deployment tooling:
+
+```bash
+yarn add -D @opennextjs/cloudflare wrangler
+```
+
+2. Copy the env template and fill local values:
+
+```bash
+cp .dev.vars.example .dev.vars
+```
+
+3. Configure `wrangler.toml` bindings:
+- `compatibility_flags = ["nodejs_compat"]`
+- `[[kv_namespaces]]` for SSR cache (`NEXT_CACHE_KV`)
+- `[[r2_buckets]]` for object storage (`NEXT_R2`)
+
+4. Build worker bundle:
+
+```bash
+yarn cf:build
+```
+
+5. Local preview with Workers runtime:
+
+```bash
+yarn cf:preview
+```
+
+6. Deploy:
+
+```bash
+yarn cf:deploy
+```
+
+Optional (specific Wrangler environment):
+
+```bash
+CF_ENV=production yarn cf:deploy:env
+```
+
+`cf:deploy` now enforces this pipeline:
+1) `npx opennextjs-cloudflare build`
+2) verify `.open-next/worker.js` exists
+3) `npx wrangler deploy`
+
+For a complete production checklist and troubleshooting runbook, see [`docs/cloudflare-deploy.md`](./docs/cloudflare-deploy.md).
+
 ### Guides
 
 #### <a href="https://www.algolia.com/doc/guides/security/api-keys/" target="_blank">How to get Aloglia Keys</a>
